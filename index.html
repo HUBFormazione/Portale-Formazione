@@ -224,24 +224,26 @@
         <div class="flex space-x-3"><button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium"> 💾 Salva Configurazione </button> <button type="button" onclick="testEmailJSConfig()" class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors font-medium"> 🧪 Test Email </button>
         </div>
        </form>
-      </div><!-- Instructions -->
-      <div class="bg-gray-50 rounded-lg p-4">
-       <h5 class="font-medium text-gray-800 mb-3">📚 Come ottenere le credenziali EmailJS:</h5>
-       <ol class="text-sm text-gray-700 space-y-2 ml-4">
-        <li><strong>1.</strong> Vai su <a href="https://www.emailjs.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">https://www.emailjs.com/</a> e crea un account gratuito</li>
-        <li><strong>2.</strong> Crea un <strong>Email Service</strong> (Gmail, Outlook, ecc.) e collegalo al tuo account email</li>
-        <li><strong>3.</strong> Crea un <strong>Email Template</strong> con i parametri richiesti sopra</li>
-        <li><strong>4.</strong> Copia <strong>Public Key</strong>, <strong>Service ID</strong> e <strong>Template ID</strong> e inseriscili qui sopra</li>
-        <li><strong>5.</strong> Clicca <strong>Salva Configurazione</strong> e testa l'invio email!</li>
-       </ol>
-      </div>
-     </div><!-- Google Sheets Connection Test -->
-     <div class="bg-white rounded-xl shadow-lg p-6">
-      <h3 class="text-xl font-semibold text-gray-800 mb-4">🔗 Test Connessione Google Sheets</h3>
-      <div class="space-y-3">
-       <div class="flex items-start justify-between p-3 bg-gray-50 rounded-lg"><span class="text-sm text-gray-700 font-medium">URL Configurato:</span> <span id="sheetsUrlDisplay" class="text-xs text-gray-500 font-mono ml-2 break-all"></span>
-       </div><button onclick="testConnection()" class="w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-3 rounded-lg transition-colors font-medium"> 🧪 Testa Connessione </button>
-       <div id="connectionResult" class="hidden p-4 rounded-lg"></div>
+      </div><!-- Google Sheets Connection Test -->
+      <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl shadow-lg p-6 border-2 border-purple-200">
+       <div class="flex items-center justify-between mb-4">
+        <div>
+         <h3 class="text-xl font-semibold text-gray-800 mb-1">🔗 Test Connessione Google Sheets</h3>
+         <p class="text-sm text-gray-600">Diagnostica problemi di connessione con il database</p>
+        </div>
+        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center"><span class="text-white text-xl">🧪</span>
+        </div>
+       </div>
+       <div class="space-y-4">
+        <div class="p-4 bg-white rounded-lg shadow-sm border border-gray-200">
+         <p class="text-sm text-gray-700 font-medium mb-2">📋 URL Configurato:</p>
+         <p id="sheetsUrlDisplay" class="text-xs text-gray-600 font-mono break-all p-2 bg-gray-50 rounded"></p>
+        </div><button onclick="testConnection()" class="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-4 rounded-lg transition-all font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105"> 🧪 TESTA CONNESSIONE ORA </button>
+        <div id="connectionResult" class="hidden"></div>
+        <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+         <p class="text-xs text-blue-800">💡 <strong>Quando usare:</strong> Se non vedi i dati caricati o ricevi errori, usa questo test per capire esattamente dov'è il problema!</p>
+        </div>
+       </div>
       </div>
      </div>
     </div>
@@ -974,7 +976,7 @@
             
             if (tab === 'settings') {
                 updateEmailStatusBadge();
-                document.getElementById('sheetsUrlDisplay').textContent = GOOGLE_SHEETS_URL.substring(0, 50) + '...';
+                document.getElementById('sheetsUrlDisplay').textContent = GOOGLE_SHEETS_URL.substring(0, 80) + '...';
             }
         }
 
@@ -1259,5 +1261,5 @@
             console.log('🔗 Google Sheets URL:', GOOGLE_SHEETS_URL);
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a509956922a9a1f',t:'MTc2NDIzNTc0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a50aa7ca09c9a1f',t:'MTc2NDIzNjQ0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
