@@ -114,16 +114,16 @@
   <nav class="bg-white shadow-lg border-b-4 border-green-500">
    <div class="max-w-7xl mx-auto px-4">
     <div class="flex justify-between items-center py-4">
-     <div class="flex items-center space-x-3">
-      <div class="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center"><span class="text-white font-bold text-lg">🎓</span>
+     <div class="flex items-center space-x-3"><!-- Logo Piattaforma Personalizzato (sinistra) -->
+      <div id="platformLogoNavContainer" class="hidden"><img id="platformLogoNav" src="" alt="Logo Piattaforma" class="h-12 object-contain">
+      </div><!-- Logo Default (se non c'è logo personalizzato) -->
+      <div id="defaultLogoContainer" class="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center"><span class="text-white font-bold text-lg">🎓</span>
       </div>
       <div>
        <h1 class="text-2xl font-bold text-gray-800">EduPlatform <span class="text-sm text-green-600">⚡ Supabase</span></h1>
       </div>
      </div>
-     <div class="flex items-center space-x-4"><!-- Logo Piattaforma -->
-      <div id="platformLogoNavContainer" class="hidden"><img id="platformLogoNav" src="" alt="Logo Piattaforma" class="h-12 object-contain">
-      </div><span id="currentUser" class="text-gray-600 font-medium"></span> <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"> Logout </button>
+     <div class="flex items-center space-x-4"><span id="currentUser" class="text-gray-600 font-medium"></span> <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"> Logout </button>
      </div>
     </div>
    </div>
@@ -349,7 +349,7 @@
        <div class="flex items-center justify-between mb-4">
         <div>
          <h4 class="text-lg font-medium text-gray-800">🏢 Logo Piattaforma (Navigazione)</h4>
-         <p class="text-sm text-gray-600 mt-1">Il logo apparirà in alto a destra nella barra di navigazione</p>
+         <p class="text-sm text-gray-600 mt-1">Il logo apparirà in alto a sinistra nella barra di navigazione, sostituendo il logo predefinito</p>
         </div>
        </div>
        <form onsubmit="savePlatformNavLogo(event)" class="space-y-4">
@@ -1104,13 +1104,16 @@ CREATE INDEX idx_enrollments_course ON enrollments(course_id);</code></pre>
 
         function updateNavLogo(logoUrl) {
             const container = document.getElementById('platformLogoNavContainer');
+            const defaultContainer = document.getElementById('defaultLogoContainer');
             const img = document.getElementById('platformLogoNav');
             
             if (logoUrl) {
                 img.src = logoUrl;
                 container.classList.remove('hidden');
+                defaultContainer.classList.add('hidden'); // Nascondi logo default
             } else {
                 container.classList.add('hidden');
+                defaultContainer.classList.remove('hidden'); // Mostra logo default
             }
         }
 
@@ -4049,5 +4052,5 @@ CREATE INDEX idx_enrollments_course ON enrollments(course_id);</code></pre>
             console.log('✅ Piattaforma pronta!');
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a6c15b1c699ee54',t:'MTc2NDUyMzk1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a6c1b7f9416ee54',t:'MTc2NDUyNDE5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
