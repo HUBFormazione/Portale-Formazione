@@ -118,10 +118,12 @@
       <div class="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center"><span class="text-white font-bold text-lg">🎓</span>
       </div>
       <div>
-       <h1 class="text-2xl font-bold text-gray-800">HUBFormazione <span class="text-sm text-green-600">📚</span></h1>
+       <h1 class="text-2xl font-bold text-gray-800">EduPlatform <span class="text-sm text-green-600">⚡ Supabase</span></h1>
       </div>
      </div>
-     <div class="flex items-center space-x-4"><span id="currentUser" class="text-gray-600 font-medium"></span> <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"> Logout </button>
+     <div class="flex items-center space-x-4"><!-- Logo Piattaforma -->
+      <div id="platformLogoNavContainer" class="hidden"><img id="platformLogoNav" src="" alt="Logo Piattaforma" class="h-12 object-contain">
+      </div><span id="currentUser" class="text-gray-600 font-medium"></span> <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"> Logout </button>
      </div>
     </div>
    </div>
@@ -132,7 +134,7 @@
      <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white text-2xl">🎓</span>
      </div>
      <h2 class="text-3xl font-bold text-gray-800">Accedi alla Piattaforma</h2>
-     <p class="text-gray-600 mt-2">HUBFormazione ⚡</p>
+     <p class="text-gray-600 mt-2">Database Supabase ⚡</p>
     </div>
     <form onsubmit="login(event)" class="space-y-6">
      <div><label for="loginEmail" class="block text-sm font-medium text-gray-700 mb-2">Email</label> <input type="email" id="loginEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
@@ -175,7 +177,7 @@
    <div id="adminDashboard" class="hidden max-w-7xl mx-auto p-6">
     <div class="mb-8">
      <h2 class="text-3xl font-bold text-gray-800 mb-2">Dashboard Amministratore</h2>
-     <p class="text-gray-600">Gestisci studenti e corsi</p>
+     <p class="text-gray-600">Gestisci studenti e corsi - Database Supabase ���</p>
     </div><!-- Admin Navigation Tabs -->
     <div class="flex space-x-1 mb-6 bg-gray-100 p-1 rounded-lg"><button onclick="showAdminTab('students')" id="studentsTab" class="flex-1 py-2 px-4 rounded-md font-medium transition-colors bg-white text-green-600 shadow-sm"> 👥 Gestione Studenti </button> <button onclick="showAdminTab('companies')" id="companiesTab" class="flex-1 py-2 px-4 rounded-md font-medium transition-colors text-gray-600 hover:text-gray-800"> 🏢 Gestione Aziende </button> <button onclick="showAdminTab('courses')" id="coursesTab" class="flex-1 py-2 px-4 rounded-md font-medium transition-colors text-gray-600 hover:text-gray-800"> 📚 Gestione Corsi </button> <button onclick="showAdminTab('reports')" id="reportsTab" class="flex-1 py-2 px-4 rounded-md font-medium transition-colors text-gray-600 hover:text-gray-800"> 📊 Report </button> <button onclick="showAdminTab('settings')" id="settingsTab" class="flex-1 py-2 px-4 rounded-md font-medium transition-colors text-gray-600 hover:text-gray-800"> ⚙️ Impostazioni </button>
     </div><!-- Students Management -->
@@ -259,7 +261,7 @@
          <p class="text-sm font-medium text-gray-600">Corsi Attivi</p>
          <p id="totalCourses" class="text-3xl font-bold text-blue-600">0</p>
         </div>
-        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center"><span class="text-blue-600 text-xl"></span>
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center"><span class="text-blue-600 text-xl">������</span>
         </div>
        </div>
       </div>
@@ -340,6 +342,28 @@
         <div><label for="emailJSTemplateID" class="block text-sm font-medium text-gray-700 mb-2">Template ID</label> <input type="text" id="emailJSTemplateID" placeholder="es: template_xyz789" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
         </div>
         <div class="flex space-x-3"><button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium"> 💾 Salva Configurazione </button> <button type="button" onclick="testEmailJSConfig()" class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors font-medium"> 🧪 Test Email </button>
+        </div>
+       </form>
+      </div><!-- Platform Navigation Logo -->
+      <div class="border-b border-gray-200 pb-6 mb-6">
+       <div class="flex items-center justify-between mb-4">
+        <div>
+         <h4 class="text-lg font-medium text-gray-800">🏢 Logo Piattaforma (Navigazione)</h4>
+         <p class="text-sm text-gray-600 mt-1">Il logo apparirà in alto a destra nella barra di navigazione</p>
+        </div>
+       </div>
+       <form onsubmit="savePlatformNavLogo(event)" class="space-y-4">
+        <div><label for="platformNavLogoUrl" class="block text-sm font-medium text-gray-700 mb-2">Logo URL</label>
+         <div class="flex space-x-2"><input type="url" id="platformNavLogoUrl" placeholder="https://esempio.com/logo.png o carica file" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"> <button type="button" onclick="document.getElementById('platformNavLogoFile').click()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg whitespace-nowrap"> 📤 Carica File </button>
+         </div><input type="file" id="platformNavLogoFile" accept="image/png,image/jpeg,image/jpg,image/gif,image/svg+xml" onchange="handlePlatformNavLogoUpload(event)" class="hidden">
+         <p class="text-xs text-gray-500 mt-1">Formato consigliato: PNG trasparente o SVG. Max 2MB. Altezza: 48px.</p>
+         <div id="platformNavLogoPreview" class="mt-3 hidden">
+          <p class="text-xs text-gray-600 mb-2">Anteprima logo navigazione:</p>
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 inline-block"><img id="platformNavLogoPreviewImg" class="h-12 object-contain" alt="Preview logo navigazione">
+          </div>
+         </div>
+        </div>
+        <div class="flex space-x-3"><button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium"> 💾 Salva Logo </button> <button type="button" onclick="removePlatformNavLogo()" class="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-medium"> 🗑️ Rimuovi </button>
         </div>
        </form>
       </div><!-- Supabase Info -->
@@ -493,14 +517,14 @@
      <div class="flex space-x-6"><!-- Left: Modules List -->
       <div class="w-1/3 border-r border-gray-200 pr-6">
        <div class="flex justify-between items-center mb-4">
-        <h4 class="font-semibold text-gray-800">📚 Moduli</h4><button onclick="addModule()" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-sm"> ➕ Modulo </button>
+        <h4 class="font-semibold text-gray-800">📚 Moduli</h4><button onclick="addModule()" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-sm"> �� Modulo </button>
        </div>
        <div id="modulesList" class="space-y-2 max-h-96 overflow-y-auto">
        </div>
       </div><!-- Right: Module Editor -->
       <div class="flex-1">
        <div id="moduleEditorEmpty" class="text-center py-12 text-gray-500">
-        <p class="text-lg">Seleziona o crea un modulo per iniziare</p>
+        <p class="text-lg">�� Seleziona o crea un modulo per iniziare</p>
        </div>
        <div id="moduleEditorContent" class="hidden">
         <div class="mb-6"><label for="moduleTitle" class="block text-sm font-medium text-gray-700 mb-2">Titolo Modulo</label> <input type="text" id="moduleTitle" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
@@ -1054,6 +1078,104 @@ CREATE INDEX idx_enrollments_course ON enrollments(course_id);</code></pre>
                 reader.onerror = reject;
                 reader.readAsDataURL(file);
             });
+        }
+
+        // ==========================================
+        // PLATFORM NAVIGATION LOGO
+        // ==========================================
+
+        function loadPlatformNavLogo() {
+            try {
+                const savedLogo = localStorage.getItem('platform_nav_logo');
+                if (savedLogo) {
+                    document.getElementById('platformNavLogoUrl').value = savedLogo;
+                    updateNavLogo(savedLogo);
+                    
+                    // Mostra anteprima nelle impostazioni
+                    const preview = document.getElementById('platformNavLogoPreview');
+                    const previewImg = document.getElementById('platformNavLogoPreviewImg');
+                    previewImg.src = savedLogo;
+                    preview.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.warn('Errore caricamento logo navigazione:', error);
+            }
+        }
+
+        function updateNavLogo(logoUrl) {
+            const container = document.getElementById('platformLogoNavContainer');
+            const img = document.getElementById('platformLogoNav');
+            
+            if (logoUrl) {
+                img.src = logoUrl;
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        async function handlePlatformNavLogoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            if (!file.type.startsWith('image/')) {
+                showNotification('⚠️ Seleziona un file immagine valido', 'error');
+                return;
+            }
+            
+            if (file.size > 2 * 1024 * 1024) {
+                showNotification('⚠️ Immagine troppo grande (max 2MB)', 'error');
+                return;
+            }
+            
+            showLoading('Caricamento logo...');
+            
+            try {
+                const base64 = await convertImageToBase64(file);
+                document.getElementById('platformNavLogoUrl').value = base64;
+                
+                // Mostra anteprima
+                const preview = document.getElementById('platformNavLogoPreview');
+                const previewImg = document.getElementById('platformNavLogoPreviewImg');
+                previewImg.src = base64;
+                preview.classList.remove('hidden');
+                
+                hideLoading();
+                showNotification('✅ Logo caricato!', 'success');
+            } catch (error) {
+                hideLoading();
+                showNotification('❌ Errore caricamento: ' + error.message, 'error');
+            }
+            
+            event.target.value = '';
+        }
+
+        function savePlatformNavLogo(event) {
+            event.preventDefault();
+            
+            const logoUrl = document.getElementById('platformNavLogoUrl').value.trim();
+            
+            try {
+                if (logoUrl) {
+                    localStorage.setItem('platform_nav_logo', logoUrl);
+                    updateNavLogo(logoUrl);
+                    showNotification('✅ Logo salvato! Visibile nella barra di navigazione.', 'success');
+                } else {
+                    localStorage.removeItem('platform_nav_logo');
+                    updateNavLogo(null);
+                    showNotification('✅ Logo rimosso.', 'success');
+                }
+            } catch (error) {
+                showNotification('❌ Errore: ' + error.message, 'error');
+            }
+        }
+
+        function removePlatformNavLogo() {
+            document.getElementById('platformNavLogoUrl').value = '';
+            document.getElementById('platformNavLogoPreview').classList.add('hidden');
+            localStorage.removeItem('platform_nav_logo');
+            updateNavLogo(null);
+            showNotification('✅ Logo rimosso!', 'success');
         }
 
         async function handlePlatformLogoUpload(event) {
@@ -3411,7 +3533,7 @@ CREATE INDEX idx_enrollments_course ON enrollments(course_id);</code></pre>
             const token = urlParams.get('token');
             const studentId = urlParams.get('id');
             
-            console.log('🔍 Checking activation link:', { action, hasToken: !!token, hasId: !!studentId });
+            console.log('��� Checking activation link:', { action, hasToken: !!token, hasId: !!studentId });
             
             if (action === 'activate' && token && studentId) {
                 showLoading('Verifica link di attivazione...');
@@ -3882,6 +4004,9 @@ CREATE INDEX idx_enrollments_course ON enrollments(course_id);</code></pre>
         document.addEventListener('DOMContentLoaded', async function() {
             console.log('🚀 Avvio EduPlatform...');
             
+            // Carica logo navigazione (sempre, anche per studenti)
+            loadPlatformNavLogo();
+            
             // 🔥 CONTROLLA LINK DI ATTIVAZIONE PRIMA DI TUTTO
             const urlParams = new URLSearchParams(window.location.search);
             const isActivationLink = urlParams.get('action') === 'activate' && urlParams.get('token') && urlParams.get('id');
@@ -3924,5 +4049,5 @@ CREATE INDEX idx_enrollments_course ON enrollments(course_id);</code></pre>
             console.log('✅ Piattaforma pronta!');
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a6b7da070a4edce',t:'MTc2NDUxNzcyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a6c15b1c699ee54',t:'MTc2NDUyMzk1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
